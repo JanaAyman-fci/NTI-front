@@ -1,0 +1,22 @@
+<div class="nav-icons">
+  <a routerLink="/login" routerLinkActive="active">
+    <i class="fas fa-sign-in-alt"></i> Sign In
+  </a>
+
+  <a routerLink="/register" routerLinkActive="active">
+    <i class="fas fa-user-plus"></i> Sign Up
+  </a>
+
+  <a routerLink="/notifications" routerLinkActive="active">
+    <i class="fas fa-heart"></i> Notifications
+  </a>
+
+  <a routerLink="/profile" routerLinkActive="active">
+    <i class="fas fa-user"></i> Profile
+  </a>
+
+  <!-- Styled like a link -->
+  <button class="nav-link-btn" (click)="logout()">
+    <i class="fas fa-sign-out-alt"></i> Logout
+  </button>
+</div>

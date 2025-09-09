@@ -1,0 +1,26 @@
+<div class="login-container">
+  <div class="login-box">
+    <h2>Instagram Clone</h2>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" [(ngModel)]="credentials.email" name="email" placeholder="Email" required />
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" [(ngModel)]="credentials.password" name="password" placeholder="Password" required />
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
+
+    <div class="switch-page">
+      <span>Do not have an account?</span>
+      <a routerLink="/register">Sign up</a>
+    </div>
+  </div>
+</div>
