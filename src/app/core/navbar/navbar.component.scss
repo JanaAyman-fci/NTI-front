@@ -3,54 +3,74 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #fff;
-  border-bottom: 1px solid #dbdbdb;
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #df9457, #dd2a7b, #8134af, #515bd4);
+  border-bottom: none;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+  color: white;
 }
-
+.nav-icons{
+     background: linear-gradient(90deg, #ab9cb9, #d97aa5, #b282ce, #a76d8d);
+     border-bottom: 1px solid #ddd;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 .logo img {
-  height: 40px;
+  height: 42px;
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.nav-icons a {
-  margin-left: 20px;
-  color: #262626;
-  font-size: 20px;
+.logo img:hover {
+  transform: scale(1.08);
+}
+
+.nav-icons {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.nav-icons a,
+.nav-icons .nav-link-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: #444;
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.nav-icons a:hover,
+.nav-icons .nav-link-btn:hover {
+  color: #e1306c; /* Instagram pink/red */
+  background: rgba(225, 48, 108, 0.08);
 }
 
 .nav-icons a.active {
-  color: #000;
+  color: #e1306c;
+  font-weight: bold;
 }
-.nav-icons {
-  display: flex;
-  gap: 20px;
-  align-items: center;
 
-  a,
-  .nav-link-btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-
-  a:hover,
-  .nav-link-btn:hover {
-    color: #e1306c; // Instagram pink/red
-  }
-
-  .nav-link-btn {
-    font-family: inherit;
-    padding: 0;
-  }
+.nav-icons a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 3px;
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+  border-radius: 2px;
 }
