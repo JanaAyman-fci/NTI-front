@@ -1,22 +1,32 @@
-<div class="nav-icons">
-  <a routerLink="/login" routerLinkActive="active">
-    <i class="fas fa-sign-in-alt"></i> Sign In
-  </a>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
-  <a routerLink="/register" routerLinkActive="active">
-    <i class="fas fa-user-plus"></i> Sign Up
-  </a>
+<div class="topbar">
+  <!-- Project Name / Logo on the left -->
+  <div class="logo">
+    <h2>Instagram Clone</h2>
+  </div>
 
-  <a routerLink="/notifications" routerLinkActive="active">
-    <i class="fas fa-heart"></i> Notifications
-  </a>
+  <!-- Navigation icons on the right -->
+  <div class="nav-icons">
+    <a routerLink="/login" routerLinkActive="active">
+      <i class="fas fa-sign-in-alt"></i> Sign In
+    </a>
 
-  <a routerLink="/profile" routerLinkActive="active">
-    <i class="fas fa-user"></i> Profile
-  </a>
+    <a routerLink="/register" routerLinkActive="active">
+      <i class="fas fa-user-plus"></i> Sign Up
+    </a>
 
-  <!-- Styled like a link -->
-  <button class="nav-link-btn" (click)="logout()">
-    <i class="fas fa-sign-out-alt"></i> Logout
-  </button>
+    <a routerLink="/notifications" routerLinkActive="active">
+      <i class="fas fa-heart"></i> Notifications
+    </a>
+
+    <a routerLink="/profile" routerLinkActive="active">
+      <i class="fas fa-user"></i> Profile
+    </a>
+
+    <!-- Styled like a link -->
+    <button class="nav-link-btn" (click)="logout()">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </button>
+  </div>
 </div>

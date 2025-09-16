@@ -1,29 +1,44 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private storageKey = 'userProfile';
+  private apiUrl = 'http://localhost:5000/api/user';
 
-  constructor() {
-    // initialize with dummy data if not already saved
-    if (!localStorage.getItem(this.storageKey)) {
-      const defaultProfile = {
-        name: 'Jana Ayman',
-        username: 'ganaayman2021@gmail.com',
-        bio: 'Love coding & photography 📸',
-        profilePic: 'https://i.pravatar.cc/150?img=3'
-      };
-      localStorage.setItem(this.storageKey, JSON.stringify(defaultProfile));
-    }
+  constructor(private http: HttpClient) {}
+
+  getMyProfile(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/me`);
   }
 
-  getProfile() {
-    return JSON.parse(localStorage.getItem(this.storageKey) || '{}');
+  getUserProfile(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
   }
 
-  updateProfile(updatedUser: any) {
-    localStorage.setItem(this.storageKey, JSON.stringify(updatedUser));
+  updateProfile(data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/me`, data);
+  }
+
+  deleteProfile(): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/me`);
+  }
+
+  followUser(id: string): Observable<any> {
+    return this.http.post(`http://localhost:5000/api/users/${id}/follow`, {});
+  }
+
+  unfollowUser(id: string): Observable<any> {
+    return this.http.post(`http://localhost:5000/api/users/${id}/unfollow`, {});
+  }
+
+  getFollowing(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}/following`);
+  }
+
+  getFollowers(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}/followers`);
   }
 }

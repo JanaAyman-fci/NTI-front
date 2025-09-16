@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './core/token-interceptor.service';
+import { AuthInterceptor } from './auth.interceptor';
 
 // 👇 import your components
 import { LoginComponent } from './auth/login/login.component';

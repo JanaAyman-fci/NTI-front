@@ -12,6 +12,6 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.user = this.userService.getProfile(); // always load from service
+    this.user = this.userService.getMyProfile(); // always load from service
   }
 }

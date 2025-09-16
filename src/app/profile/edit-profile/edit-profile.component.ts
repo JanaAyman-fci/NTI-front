@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -13,7 +13,11 @@ export class EditProfileComponent {
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
-    this.user = this.userService.getProfile();
+    this.userService.getMyProfile().subscribe({
+  next: (data) => this.user = data,
+  error: (err) => console.error(err)
+});
+
   }
 
   saveChanges() {

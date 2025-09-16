@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api/auth'; // 👈 your backend API base
+  private apiUrl = 'http://localhost:5000/api/auth'; // ✅ updated to 5000
   private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -22,8 +22,9 @@ export class AuthService {
   login(credentials: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
       tap((res: any) => {
-        if (res.token) {
-          localStorage.setItem('token', res.token);
+        // store token (depends on backend response)
+        if (res.token || res.accessToken) {
+          localStorage.setItem('token', res.token || res.accessToken);
           this.loggedIn.next(true);
         }
       })
@@ -31,14 +32,12 @@ export class AuthService {
   }
 
   // Logout
-  // Logout
-logout(): void {
-   console.log('Logout clicked!');
-  localStorage.removeItem('token');
-  this.loggedIn.next(false);
-  this.router.navigate(['/login']); // ✅ match your route config
-}
-
+  logout(): void {
+    console.log('Logout clicked!');
+    localStorage.removeItem('token');
+    this.loggedIn.next(false);
+    this.router.navigate(['/login']); // ✅ match your route config
+  }
 
   // Check login state
   isLoggedIn(): Observable<boolean> {
@@ -53,4 +52,3 @@ logout(): void {
     return localStorage.getItem('token');
   }
 }
-

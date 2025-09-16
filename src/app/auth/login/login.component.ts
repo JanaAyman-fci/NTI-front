@@ -7,10 +7,9 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-
-
 export class LoginComponent {
-  credentials: { email: string; password: string } = { email: '', password: '' };
+  
+  credentials: { username: string; password: string } = { username: '', password: '' };
   errorMsg = '';
 
   constructor(private auth: AuthService, private router: Router) {}
@@ -18,7 +17,10 @@ export class LoginComponent {
   onSubmit(): void {
     this.auth.login(this.credentials).subscribe({
       next: () => this.router.navigate(['/profile']),
-      error: () => (this.errorMsg = 'Invalid email or password')
+      error: (err) => {
+        console.error('Login failed', err);
+        this.errorMsg = err.error?.message || 'Invalid username or password';
+      }
     });
   }
 }

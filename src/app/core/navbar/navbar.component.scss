@@ -1,38 +1,33 @@
-/* navbar.component.css */
 .topbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* logo left, icons right */
   align-items: center;
-  padding: 12px 24px;
-  background: linear-gradient(90deg, #df9457, #dd2a7b, #8134af, #515bd4);
-  border-bottom: none;
+  padding: 5px 10px;
+  background: linear-gradient(90deg, #e1a573, #de6099, #9b54c5, #6973e1);
   position: sticky;
   top: 0;
   z-index: 1000;
   color: white;
 }
-.nav-icons{
-     background: linear-gradient(90deg, #ab9cb9, #d97aa5, #b282ce, #a76d8d);
-     border-bottom: 1px solid #ddd;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-.logo img {
-  height: 42px;
+
+/* Project Name (Logo/Text) */
+.logo h2 {
+ font-family: 'Pacifico', cursive;
+  margin: 0;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
   cursor: pointer;
-  transition: transform 0.3s ease;
 }
 
-.logo img:hover {
-  transform: scale(1.08);
-}
-
+/* Navigation Icons */
 .nav-icons {
   display: flex;
-  gap: 22px;
+  gap: 18px;
   align-items: center;
+  background: linear-gradient(90deg, #ab9cb9, #d97aa5, #b282ce, #a76d8d);
+  padding: 8px 12px;
+  border-radius: 8px;
 }
 
 .nav-icons a,
@@ -42,34 +37,34 @@
   gap: 6px;
   text-decoration: none;
   color: #444;
-  font-size: 18px;
+  font-size: 20px;
   background: none;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  padding: 6px 10px;
+  padding: 6px 8px;
   border-radius: 8px;
 }
 
 .nav-icons a:hover,
 .nav-icons .nav-link-btn:hover {
-  color: #e1306c; /* Instagram pink/red */
+  color: #e1306c;
   background: rgba(225, 48, 108, 0.08);
 }
 
+/* Active link styling */
 .nav-icons a.active {
   color: #e1306c;
   font-weight: bold;
 }
-
 .nav-icons a.active::after {
   content: "";
   position: absolute;
-  bottom: -6px;
+  bottom: -4px;
   left: 50%;
   transform: translateX(-50%);
-  width: 22px;
+  width: 18px;
   height: 3px;
   background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
   border-radius: 2px;
