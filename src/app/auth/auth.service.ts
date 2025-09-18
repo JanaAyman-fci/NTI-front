@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5000/api/auth'; // ✅ updated to 5000
+  private apiUrl = 'http://localhost:5000/api/auth';
   private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -22,10 +22,10 @@ export class AuthService {
   login(credentials: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
       tap((res: any) => {
-        // store token (depends on backend response)
         if (res.token || res.accessToken) {
           localStorage.setItem('token', res.token || res.accessToken);
           this.loggedIn.next(true);
+          this.router.navigate(['/']); // ✅ redirect after login
         }
       })
     );
@@ -36,10 +36,10 @@ export class AuthService {
     console.log('Logout clicked!');
     localStorage.removeItem('token');
     this.loggedIn.next(false);
-    this.router.navigate(['/login']); // ✅ match your route config
+    this.router.navigate(['/login']);
   }
 
-  // Check login state
+  // Observable login state
   isLoggedIn(): Observable<boolean> {
     return this.loggedIn.asObservable();
   }

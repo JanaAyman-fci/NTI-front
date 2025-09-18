@@ -1,6 +1,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
-<div class="topbar">
+<!-- Show navbar only when logged in -->
+<nav *ngIf="isLoggedIn | async" class="topbar">
   <!-- Project Name / Logo on the left -->
   <div class="logo">
     <h2>Instagram Clone</h2>
@@ -8,14 +9,6 @@
 
   <!-- Navigation icons on the right -->
   <div class="nav-icons">
-    <a routerLink="/login" routerLinkActive="active">
-      <i class="fas fa-sign-in-alt"></i> Sign In
-    </a>
-
-    <a routerLink="/register" routerLinkActive="active">
-      <i class="fas fa-user-plus"></i> Sign Up
-    </a>
-
     <a routerLink="/notifications" routerLinkActive="active">
       <i class="fas fa-heart"></i> Notifications
     </a>
@@ -29,4 +22,21 @@
       <i class="fas fa-sign-out-alt"></i> Logout
     </button>
   </div>
-</div>
+</nav>
+
+<!-- Show login/register links if NOT logged in -->
+<nav *ngIf="!(isLoggedIn | async)" class="topbar">
+  <div class="logo">
+    <h2>Instagram Clone</h2>
+  </div>
+
+  <div class="nav-icons">
+    <a routerLink="/login" routerLinkActive="active">
+      <i class="fas fa-sign-in-alt"></i> Sign In
+    </a>
+
+    <a routerLink="/register" routerLinkActive="active">
+      <i class="fas fa-user-plus"></i> Sign Up
+    </a>
+  </div>
+</nav>

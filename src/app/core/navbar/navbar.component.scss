@@ -1,6 +1,7 @@
+/* Default: Topbar */
 .topbar {
   display: flex;
-  justify-content: space-between; /* logo left, icons right */
+  justify-content: space-between;
   align-items: center;
   padding: 5px 10px;
   background: linear-gradient(90deg, #e1a573, #de6099, #9b54c5, #6973e1);
@@ -12,7 +13,7 @@
 
 /* Project Name (Logo/Text) */
 .logo h2 {
- font-family: 'Pacifico', cursive;
+  font-family: 'Pacifico', cursive;
   margin: 0;
   font-size: 40px;
   font-weight: bold;
@@ -53,7 +54,6 @@
   background: rgba(225, 48, 108, 0.08);
 }
 
-/* Active link styling */
 .nav-icons a.active {
   color: #e1306c;
   font-weight: bold;
@@ -68,4 +68,54 @@
   height: 3px;
   background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
   border-radius: 2px;
+}
+
+/* 🔹 Sidebar Mode (when screen < 768px) */
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    padding: 5px 0;
+    z-index: 1000;
+  }
+
+  .logo {
+    display: none; /* hide logo to save space */
+  }
+
+  .nav-icons {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    gap: 0;
+    background: none;
+    padding: 0;
+  }
+
+  .nav-icons a,
+  .nav-icons .nav-link-btn {
+    flex: 1;
+    justify-content: center;
+    color: #444;
+    font-size: 22px;
+    border-radius: 0;
+    padding: 10px 0;
+  }
+
+  .nav-icons a.active {
+    color: #e1306c;
+  }
+
+  .nav-icons a.active::after {
+    display: none; /* remove top bar underline */
+  }
 }
